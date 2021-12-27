@@ -1,0 +1,50 @@
+﻿@*https://stackoverflow.com/questions/39531453/populating-dropdown-in-asp-net-core*@
+@model MeetingScheduler.ViewModel.MeetingCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Meeting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Meeting.Name" class="control-label"></label>
+                <input asp-for="Meeting.Name" class="form-control" />
+                <span asp-validation-for="Meeting.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Meeting.startDate" class="control-label"></label>
+                <input asp-for="Meeting.startDate" class="form-control" />
+                <span asp-validation-for="Meeting.startDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Meeting.endDate" class="control-label"></label>
+                <input asp-for="Meeting.endDate" class="form-control" />
+                <span asp-validation-for="Meeting.endDate" class="text-danger"></span>
+            </div>
+            @*broken code :(*@
+            @*<div class="form-group">
+                <label asp-for="AvailableRooms" class="control-label"></label>
+                @Html.DropDownListFor(m => Model.Meeting.Room.Id, Model.AvailableRooms, "Please select")
+                <span asp-validation-for="AvailableRooms" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
